@@ -9,6 +9,8 @@ const route = useRoute()
 let post = reactive({});
 
 //const post = store.posts.find(x => x.id === parseInt(route.params.id) )
+// TODO: why is this necessary after navigating from Home? shouldn't posts be cached from the home query?
+// Fine to have this generally case someone could save just the link, but still. This executes every time
 const fetchPost = async (id) => {
     const found = store.posts.find(x => x.id === parseInt(route.params.id))
     if (found) {
