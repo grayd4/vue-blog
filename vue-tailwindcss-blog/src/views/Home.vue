@@ -26,7 +26,7 @@ fetchPosts()
                 There are no posts.
             </div>
             <div v-else class="PostItem" v-for="item, itemIndex in store.posts" v-bind:key="itemIndex" @click="$router.push(`/post/${item.id}`)">
-                <h1>{{ item.title }}, post #{{ item.id }}</h1>
+                <h1 class="text-gray-500">{{ item.title }}, post #{{ item.id }}</h1>
                 <p>{{ getWordCount(item.description) }} words</p>
             </div>
         </main>
