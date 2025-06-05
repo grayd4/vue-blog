@@ -32,15 +32,17 @@ fetchPost(route.params.id)
 </script>
 
 <template>
-    <div class="Post">
-        <div v-if="!post">
-            <p>No post found.</p>
-        </div> 
-        <div v-else>
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.date }}</p>
-            <p>{{ post.description }}</p>
-            <p>{{ post.content }}</p>
+    <main class="container mx-auto">
+        <div class="Post">
+            <div v-if="!post">
+                <p>No post found.</p>
+            </div> 
+            <div v-else>
+                <h1 class="text-blue-300 text-6xl font-bold mb-4">{{ post.title }}</h1>
+                <p class="text-xl text-slate-500">{{ new Date(post.date).toLocaleString("en-US") }}</p>
+                <p class="text-xl text-slate-500">{{ post.description }}</p>
+                <p class="text-l text-slate-800">{{ post.content }}</p>
+            </div>
         </div>
-    </div>
+    </main>
 </template>
