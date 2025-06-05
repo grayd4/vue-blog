@@ -8,6 +8,7 @@ const fetchPosts = async () => {
      let { data: posts, error } = await supabase
     .from('posts')
     .select()
+    .order('date', {ascending: false})
 
     if (error) throw new Error(error)
     store.posts = posts
