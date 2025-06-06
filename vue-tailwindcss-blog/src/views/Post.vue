@@ -29,6 +29,17 @@ const fetchPost = async (id) => {
 }
 
 fetchPost(route.params.id)
+
+// //const {data, error} = await supabase.storage.getBucket('vueblog');
+// const {data, error} = await supabase.storage.from('vueblog').list('', {limit: 100});
+// if (error) {
+//     console.log(error);
+// } else {
+//     console.log(data);
+
+// }
+
+
 </script>
 
 <template>
@@ -44,5 +55,6 @@ fetchPost(route.params.id)
                 <p class="text-l text-slate-800">{{ post.content }}</p>
             </div>
         </div>
+        <img src="https://ayxorfrfsnwcmkzyfpoc.supabase.co/storage/v1/object/public/vueblog/BlogPhotos/TestPhoto/IMG_2631_saturated%20(2).JPG">
     </main>
 </template>
