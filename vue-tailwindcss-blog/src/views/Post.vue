@@ -8,7 +8,6 @@ const route = useRoute()
 
 let post = reactive({});
 let photos = reactive({});
-//let photos = ref([])
 
 //const post = store.posts.find(x => x.id === parseInt(route.params.id) )
 // TODO: why is this necessary after navigating from Home? shouldn't posts be cached from the home query?
