@@ -7,6 +7,8 @@ import supabase from '../supabase'
 const route = useRoute()
 
 let post = reactive({});
+let photos = reactive({});
+//let photos = ref([])
 
 //const post = store.posts.find(x => x.id === parseInt(route.params.id) )
 // TODO: why is this necessary after navigating from Home? shouldn't posts be cached from the home query?
@@ -28,7 +30,23 @@ const fetchPost = async (id) => {
     store.posts = [...store.posts, post]    // Cache post
 }
 
+const fetchPostPictures = async (postId) => {
+    let { data, error } = await supabase
+    .from('photos')
+    .select()
+    //.eq('post_id', postId)
+
+    if (error) throw new Error(error)
+
+    //photos.value = data
+    Object.assign(photos, data)
+    //store.photos = [...store.photos, photos]
+}
+
 fetchPost(route.params.id)
+fetchPostPictures(route.params.id)
+.then(console.log('photos: ' + JSON.stringify(photos)))
+
 
 // //const {data, error} = await supabase.storage.getBucket('vueblog');
 // const {data, error} = await supabase.storage.from('vueblog').list('', {limit: 100});
@@ -54,7 +72,17 @@ fetchPost(route.params.id)
                 <p class="text-xl text-slate-500">{{ post.description }}</p>
                 <p class="text-l text-slate-800">{{ post.content }}</p>
             </div>
+            <div>
+                <p>photos</p>
+                <div v-for="item, itemIndex in photos" v-bind:key="itemIndex">
+                    <img v-bind:src="item.url">
+                </div>
+            
+
+            </div>
+            
         </div>
-        <img src="https://ayxorfrfsnwcmkzyfpoc.supabase.co/storage/v1/object/public/vueblog/BlogPhotos/TestPhoto/IMG_2631_saturated%20(2).JPG">
+        <!--img src="https://ayxorfrfsnwcmkzyfpoc.supabase.co/storage/v1/object/public/vueblog/BlogPhotos/TestPhoto/IMG_2631_saturated%20(2).JPG"-->
+        
     </main>
 </template>
