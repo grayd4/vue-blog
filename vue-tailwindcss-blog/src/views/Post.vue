@@ -80,8 +80,6 @@ fetchPostPictures(route.params.id)
 
             </div>
             
-        </div>
-        <!--img src="https://ayxorfrfsnwcmkzyfpoc.supabase.co/storage/v1/object/public/vueblog/BlogPhotos/TestPhoto/IMG_2631_saturated%20(2).JPG"-->
-        
+        </div>        
     </main>
 </template>
