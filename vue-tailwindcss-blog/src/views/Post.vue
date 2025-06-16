@@ -60,8 +60,13 @@ fetchPostPictures(route.params.id)
                 <p class="text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
             </div>
             <div class="m4" v-for="item, itemIndex in photos" v-bind:key="itemIndex">
-                <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
-                <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
+                <div v-if="item.type == 'image'">
+                    <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
+                    <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
+                </div>
+                <div v-else-if="item.type == 'youtube'">
+                    <iframe class="w-full aspect-video" v-bind:src="item.url"></iframe>
+                </div>
             </div>
 
         </div>
