@@ -17,11 +17,11 @@ const fetchPost = async (id) => {
     if (found) {
         return
     }
-     let { data, error } = await supabase
-    .from('posts')
-    .select()   // all columns
-    .eq('id', id)
-    .single()
+    let { data, error } = await supabase
+        .from('posts')
+        .select()   // all columns
+        .eq('id', id)
+        .single()
 
     if (error) throw new Error(error)
 
@@ -31,9 +31,9 @@ const fetchPost = async (id) => {
 
 const fetchPostPictures = async (postId) => {
     let { data, error } = await supabase
-    .from('photos')
-    .select()
-    //.eq('post_id', postId)
+        .from('photos')
+        .select()
+        .eq('post_id', postId)
 
     if (error) throw new Error(error)
 
@@ -44,18 +44,6 @@ const fetchPostPictures = async (postId) => {
 
 fetchPost(route.params.id)
 fetchPostPictures(route.params.id)
-.then(console.log('photos: ' + JSON.stringify(photos)))
-
-
-// //const {data, error} = await supabase.storage.getBucket('vueblog');
-// const {data, error} = await supabase.storage.from('vueblog').list('', {limit: 100});
-// if (error) {
-//     console.log(error);
-// } else {
-//     console.log(data);
-
-// }
-
 
 </script>
 
@@ -64,22 +52,18 @@ fetchPostPictures(route.params.id)
         <div class="Post">
             <div v-if="!post">
                 <p>No post found.</p>
-            </div> 
+            </div>
             <div v-else>
                 <h1 class="text-blue-300 text-6xl font-bold mb-4">{{ post.title }}</h1>
                 <p class="text-xl text-slate-500">{{ new Date(post.date).toLocaleString("en-US") }}</p>
                 <p class="text-xl text-slate-500">{{ post.description }}</p>
-                <p class="text-l text-slate-800">{{ post.content }}</p>
+                <p class="text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
             </div>
-            <div>
-                <p>photos</p>
-                <div v-for="item, itemIndex in photos" v-bind:key="itemIndex">
-                    <img v-bind:src="item.url">
-                </div>
-            
+            <div class="m4" v-for="item, itemIndex in photos" v-bind:key="itemIndex">
+                <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
+                <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
+            </div>
 
-            </div>
-            
-        </div>        
+        </div>
     </main>
 </template>
