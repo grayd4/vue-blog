@@ -3,3 +3,9 @@
 .container {
     max-width: 600px;
 }
+
+
+.post-text {
+    /*Allow for line breaks from text stored in supabase to be displayed*/
+    white-space: pre-line;
+}

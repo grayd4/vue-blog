@@ -57,7 +57,7 @@ fetchPostPictures(route.params.id)
                 <h1 class="text-blue-300 text-6xl font-bold mb-4">{{ post.title }}</h1>
                 <p class="text-xl text-slate-500">{{ new Date(post.date).toLocaleString("en-US") }}</p>
                 <p class="text-xl text-slate-500">{{ post.description }}</p>
-                <p class="text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
+                <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
             </div>
             <div class="m4" v-for="item, itemIndex in photos" v-bind:key="itemIndex">
                 <div v-if="item.type == 'image'">
