@@ -57,6 +57,12 @@ fetchPostPictures(route.params.id)
                 <h1 class="text-blue-300 text-6xl font-bold mb-4">{{ post.title }}</h1>
                 <p class="text-xl text-slate-500">{{ new Date(post.date).toLocaleString("en-US") }}</p>
                 <p class="text-xl text-slate-500">{{ post.description }}</p>
+                <a class="underline text-gray-500 hover:text-blue-500 visited:text-purple-300" v-if="post.github" v-bind:href="post.github">
+                    <div class="flex flex-row">
+                        <v-icon name="bi-github" color="#6a7282" scale="2" mr-4></v-icon>
+                        <p class="mb-auto mt-auto">Project GitHub</p>
+                    </div>
+                </a>
                 <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
             </div>
             <div class="m4" v-for="item, itemIndex in photos" v-bind:key="itemIndex">
