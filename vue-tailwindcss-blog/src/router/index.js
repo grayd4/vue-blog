@@ -13,6 +13,12 @@ const router = createRouter({
       name: 'Post',
       component: () => import('../views/Post.vue')
     },
+    // Catch-all route for 404
+    {
+      path: '/:pathMatch(.*)*', // Matches any path
+      name: 'NotFound',
+      component: () => import('../views/Home.vue')
+    },
     // {
     //   path: '/',
     //   name: 'home',
