@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
 import store from '../store'
 import supabase from '../supabase'
@@ -38,10 +38,7 @@ const fetchPostPictures = async (postId) => {
 
     if (error) throw new Error(error)
 
-    //photos.value = data
-    Object.assign(photos, data)
-    console.log(photos)
-    //store.photos = [...store.photos, photos]
+]   Object.assign(photos, data)
 }
 
 const fetchPostLinks = async (postId) => {
@@ -53,7 +50,6 @@ const fetchPostLinks = async (postId) => {
     if (error) throw new Error(error)
 
     Object.assign(links, data)
-    console.log(links)
 }
 
 
@@ -80,7 +76,7 @@ fetchPostLinks(route.params.id)
                     </div>
                 </a>
                 <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
-                <div class="m4" v-for="item in photos" v-bind:key="itemIndex">
+                <div class="m-4" v-for="item in photos">
                     <div v-if="item.type == 'image'">
                         <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
                         <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
@@ -89,11 +85,12 @@ fetchPostLinks(route.params.id)
                         <iframe class="w-full aspect-video" v-bind:src="item.url"></iframe>
                     </div>
                 </div>
-                <h2 class="" v-if="links.length">External Links</h2>
-                <h2 v-else>no links!</h2>
-                <div class="m4" v-for="item in links">
-                    <div class="flex flex-row">
-                        <a v-bind:href="item.link">{{ item.name }}</a>
+                <div>
+                    <h2 class="text-xl text-slate-700" v-if="Object.keys(links).length">External Links</h2>
+                    <div class="m-4" v-for="item in links">
+                        <div class="flex flex-row">
+                            <a class="underline text-gray-500 hover:text-blue-500 visited:text-purple-300" v-bind:href="item.link">{{ item.name }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
