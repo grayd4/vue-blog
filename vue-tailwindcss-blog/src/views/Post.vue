@@ -38,7 +38,7 @@ const fetchPostPictures = async (postId) => {
 
     if (error) throw new Error(error)
 
-]   Object.assign(photos, data)
+    Object.assign(photos, data)
 }
 
 const fetchPostLinks = async (postId) => {
@@ -94,8 +94,6 @@ fetchPostLinks(route.params.id)
                     </div>
                 </div>
             </div>
-            
-
         </div>
     </main>
 </template>
