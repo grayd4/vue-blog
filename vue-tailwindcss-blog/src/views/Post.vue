@@ -8,6 +8,7 @@ const route = useRoute()
 
 let post = reactive({});
 let photos = reactive({});
+let links = reactive({});
 
 //const post = store.posts.find(x => x.id === parseInt(route.params.id) )
 // TODO: why is this necessary after navigating from Home? shouldn't posts be cached from the home query?
@@ -39,11 +40,26 @@ const fetchPostPictures = async (postId) => {
 
     //photos.value = data
     Object.assign(photos, data)
+    console.log(photos)
     //store.photos = [...store.photos, photos]
 }
 
+const fetchPostLinks = async (postId) => {
+    let { data, error } = await supabase
+        .from('externalLinks')
+        .select()
+        .eq('post_id', postId)
+
+    if (error) throw new Error(error)
+
+    Object.assign(links, data)
+    console.log(links)
+}
+
+
 fetchPost(route.params.id)
 fetchPostPictures(route.params.id)
+fetchPostLinks(route.params.id)
 
 </script>
 
@@ -64,16 +80,24 @@ fetchPostPictures(route.params.id)
                     </div>
                 </a>
                 <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
-            </div>
-            <div class="m4" v-for="item, itemIndex in photos" v-bind:key="itemIndex">
-                <div v-if="item.type == 'image'">
-                    <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
-                    <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
+                <div class="m4" v-for="item in photos" v-bind:key="itemIndex">
+                    <div v-if="item.type == 'image'">
+                        <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
+                        <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
+                    </div>
+                    <div v-else-if="item.type == 'youtube'">
+                        <iframe class="w-full aspect-video" v-bind:src="item.url"></iframe>
+                    </div>
                 </div>
-                <div v-else-if="item.type == 'youtube'">
-                    <iframe class="w-full aspect-video" v-bind:src="item.url"></iframe>
+                <h2 class="" v-if="links.length">External Links</h2>
+                <h2 v-else>no links!</h2>
+                <div class="m4" v-for="item in links">
+                    <div class="flex flex-row">
+                        <a v-bind:href="item.link">{{ item.name }}</a>
+                    </div>
                 </div>
             </div>
+            
 
         </div>
     </main>
