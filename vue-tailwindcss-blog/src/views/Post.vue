@@ -78,11 +78,12 @@ fetchPostLinks(route.params.id)
                 <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
                 <div class="m-4" v-for="item in photos">
                     <div v-if="item.type == 'image'">
-                        <img class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
+                        <img loading="lazy" class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
                         <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
                     </div>
                     <div v-else-if="item.type == 'youtube'">
-                        <iframe class="w-full aspect-video" v-bind:src="item.url"></iframe>
+                        <iframe loading="lazy" class="w-full aspect-video" v-bind:src="item.url"></iframe>
+                        <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
                     </div>
                 </div>
                 <div>
