@@ -61,7 +61,7 @@ fetchPostLinks(route.params.id)
 
 <template>
     <main class="container mx-auto">
-        <div class="Post">
+        <div class="Post m-4">
             <div v-if="!post">
                 <p>No post found.</p>
             </div>

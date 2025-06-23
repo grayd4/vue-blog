@@ -19,10 +19,9 @@ fetchPosts()
 </script>
 
 <template>
-    <br />
     <div class="Home">
         <main class="container mx-auto">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4 m-4">
                 <div class="tech-posts">
                     <h2 class="text-slate-700 mb-4 text-2xl text-center border-b border-slate-700 p-4" >Tech Stuff</h2>
                     <div v-if="!store.posts.filter((item) => item.category == 'tech').length">
