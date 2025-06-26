@@ -31,7 +31,7 @@ fetchPosts()
                         <h1 class="text-slate-900 text-2xl">{{ item.title }}</h1>
                         <p class="text-slate-300 text-xl mb-4">{{ new Date(item.date).toLocaleString("en-US") }}</p>
                         <p class="text-xl text-slate-500">{{ getWordCount(item.content) }} words</p>
-                        <img v-if="item.thumb" loading="lazy" class="rounded h-48 w-96 object-cover m-1" v-bind:src="item.thumb">
+                        <img v-if="item.thumb" loading="lazy" class="rounded h-48 w-96 object-cover mt-1" v-bind:src="item.thumb">
                     </div>
                 </div>
                 <div class="general-posts">
@@ -43,7 +43,7 @@ fetchPosts()
                         <h1 class="text-slate-900 text-2xl">{{ item.title }}</h1>
                         <p class="text-slate-300 text-xl mb-4">{{ new Date(item.date).toLocaleString("en-US") }}</p>
                         <p class="text-xl text-slate-500">{{ getWordCount(item.content) }} words</p>
-                        <img v-if="item.thumb" loading="lazy" class="rounded h-48 w-96 object-cover m-1" v-bind:src="item.thumb">
+                        <img v-if="item.thumb" loading="lazy" class="rounded h-48 w-96 object-cover mt-1" v-bind:src="item.thumb">
                     </div>
                 </div>
             </div>
