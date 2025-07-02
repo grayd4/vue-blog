@@ -9,14 +9,16 @@ import {
     BiArrowLeftSquare,
     BiGithub, 
     BiLinkedin, 
-    BiYoutube
+    BiYoutube,
+    PrSpinner
 } from "oh-vue-icons/icons";
 
 addIcons(
     BiArrowLeftSquare,
     BiGithub,
     BiYoutube,
-    BiLinkedin
+    BiLinkedin,
+    PrSpinner
 );
 
 const app = createApp(App)

@@ -1,6 +1,7 @@
 <script setup>
 import store from '../store.js'
 import supabase from '../supabase'
+import EmptyPostList from '@/components/EmptyPostList.vue'
 
 const getWordCount = (str) => (str.split(' ').length)
 
@@ -25,7 +26,7 @@ fetchPosts()
                 <div class="tech-posts">
                     <h2 class="text-slate-700 mb-4 text-2xl text-center border-b border-slate-700 p-4" >Tech Stuff</h2>
                     <div v-if="!store.posts.filter((item) => item.category == 'tech').length">
-                        There are no posts.
+                        <EmptyPostList />
                     </div>
                     <div v-else class="PostItem border border-slate-700 mb-4 p-4 rounded-lg cursor-pointer bg-slate-100" v-for="item, itemIndex in store.posts.filter((item) => item.category == 'tech')" v-bind:key="itemIndex" @click="$router.push(`/post/${item.id}`)">
                         <h1 class="text-slate-900 text-2xl">{{ item.title }}</h1>
@@ -37,7 +38,7 @@ fetchPosts()
                 <div class="general-posts">
                     <h2 class="text-slate-700 mb-4 text-2xl text-center border-b border-slate-700 p-4" >General</h2>
                     <div v-if="!store.posts.filter((item) => item.category != 'tech').length">
-                        There are no posts.
+                        <EmptyPostList />
                     </div>
                     <div v-else class="PostItem border border-slate-700 mb-4 p-4 rounded-lg cursor-pointer bg-slate-100" v-for="item, itemIndex in store.posts.filter((item) => item.category != 'tech')" v-bind:key="itemIndex" @click="$router.push(`/post/${item.id}`)">
                         <h1 class="text-slate-900 text-2xl">{{ item.title }}</h1>
