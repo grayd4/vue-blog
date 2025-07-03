@@ -9,3 +9,14 @@
     /*Allow for line breaks from text stored in supabase to be displayed*/
     white-space: pre-line;
 }
+
+/* For progressive image loading. Blur while preview is loaded, unblur when full size is ready 
+See https://codesandbox.io/p/sandbox/9l3n6j5944?file=%2Fsrc%2FApp.vue for example of other transitions*/
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 0.7s;
+}
+
+.v-lazy-image-loaded {
+  filter: blur(0);
+}

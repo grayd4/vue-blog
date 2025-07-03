@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, toRaw } from 'vue'
 import { useRoute } from 'vue-router'
+import ProgImage from '@/components/ProgImage.vue'
 import store from '../store'
 import supabase from '../supabase'
 
@@ -78,7 +79,7 @@ fetchPostLinks(route.params.id)
                 <p class="post-text text-l text-slate-800 mt-4 mb-4">{{ post.content }}</p>
                 <div class="m-4" v-for="item in photos">
                     <div v-if="item.type == 'image'">
-                        <img loading="lazy" class="rounded" v-bind:src="item.url" v-bind:alt="item.caption">
+                        <ProgImage class="rounded" v-bind:src="item.url" v-bind:progressiveSrc="item.progressive_image_url" v-bind:alt="item.caption"></ProgImage>
                         <p class="text-l text-slate-500 mb-4">{{ item.caption }}</p>
                     </div>
                     <div v-else-if="item.type == 'youtube'">
