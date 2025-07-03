@@ -20,3 +20,22 @@ See https://codesandbox.io/p/sandbox/9l3n6j5944?file=%2Fsrc%2FApp.vue for exampl
 .v-lazy-image-loaded {
   filter: blur(0);
 }
+
+/*Replace builtin tailwind background 
+https://stackoverflow.com/questions/31267425/use-the-html-img-tag-as-a-background-image-instead-of-the-css-background-image
+*/
+.manual-bg-div {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.manual-bg-img {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}

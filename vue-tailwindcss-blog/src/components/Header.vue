@@ -1,5 +1,10 @@
+<script setup>
+    import ProgImage from '@/components/ProgImage.vue'
+</script>
+
 <template>
-    <div class="bg-[url(/Background.png)] bg-cover bg-center bg-no-repeat">
+    <div class="manual-bg-div">
+        <ProgImage class="manual-bg-img" src="/Background.png" progressiveSrc="/Background_xs.png"></ProgImage>
         <div class="container mx-auto">
             <header class="text-center">
                 <div>
