@@ -10,7 +10,8 @@ import {
     BiGithub, 
     BiLinkedin, 
     BiYoutube,
-    PrSpinner
+    PrSpinner,
+    BiEnvelopeFill
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -18,7 +19,8 @@ addIcons(
     BiGithub,
     BiYoutube,
     BiLinkedin,
-    PrSpinner
+    PrSpinner,
+    BiEnvelopeFill
 );
 
 const app = createApp(App)
