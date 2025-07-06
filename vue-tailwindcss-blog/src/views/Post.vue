@@ -67,7 +67,7 @@ fetchPostLinks(route.params.id)
                 <p>No post found.</p>
             </div>
             <div v-else>
-                <h1 class="text-amber-200 text-6xl font-bold mb-4">{{ post.title }}</h1>
+                <h1 class="text-amber-200 text-6xl font-bold mb-4 text-shadow-xs">{{ post.title }}</h1>
                 <p v-if="post.date" class="text-xl text-slate-500">{{ new Date(post.date).toLocaleString("en-US") }}</p>
                 <p class="text-xl text-slate-500">{{ post.description }}</p>
                 <a class="underline text-gray-500 hover:text-blue-500 visited:text-purple-300" v-if="post.github" v-bind:href="post.github">
