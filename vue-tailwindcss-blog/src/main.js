@@ -6,7 +6,7 @@ import router from './router'
 
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import { 
-    BiArrowLeftSquare,
+    BiArrowLeftSquareFill,
     BiGithub, 
     BiLinkedin, 
     BiYoutube,
@@ -15,7 +15,7 @@ import {
 } from "oh-vue-icons/icons";
 
 addIcons(
-    BiArrowLeftSquare,
+    BiArrowLeftSquareFill,
     BiGithub,
     BiYoutube,
     BiLinkedin,

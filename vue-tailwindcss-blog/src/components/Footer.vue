@@ -7,7 +7,11 @@
                     <a href="https://www.linkedin.com/in/danieldgray/"><v-icon name="bi-linkedin" color="#d1d5dc" scale="2"></v-icon></a>
                     <a href="https://www.youtube.com/@daniel_gray"><v-icon name="bi-youtube" color="#d1d5dc" scale="2"></v-icon></a>
                     <v-icon class="cursor-pointer" name="bi-envelope-fill" color="#d1d5dc" scale="2"  @click="$router.push('/Contact')"></v-icon>
-                    <p class="text-l font-extrabold text-gray-300 w-full m-auto">Copyright Daniel Gray {{ new Date().getFullYear() }}</p>
+                    <div class="flex flex-row w-full">
+                        <v-icon class="cursor-pointer" name="bi-arrow-left-square-fill" color="#d1d5dc" scale="2"  @click="$router.back()"></v-icon>
+                        <p class="text-l font-bold text-gray-300 m-auto text-center mx-4 w-full">Copyright Daniel Gray {{ new Date().getFullYear() }}</p>
+
+                    </div>
                 </div>
             </div>
         </footer>
